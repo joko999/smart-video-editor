@@ -1,51 +1,45 @@
-const { exec } = require('child_process');
+// videoProcessor.js
 
 /**
- * Cuts a video from start time to end time.
- * @param {string} inputFile - The path to the input video file.
- * @param {string} outputFile - The path to save the cut video file.
- * @param {string} startTime - The start time in the format hh:mm:ss.
- * @param {string} endTime - The end time in the format hh:mm:ss.
+ * Cuts a video into 3-second segments.
+ * @param {string} inputVideoPath - The path to the input video.
+ * @returns {Promise<Array<string>>} - An array of paths for the 3-second segments.
  */
-function cutVideo(inputFile, outputFile, startTime, endTime) {
-    const command = `ffmpeg -i ${inputFile} -ss ${startTime} -to ${endTime} -c copy ${outputFile}`;
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error cutting video: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`Video cut successfully: ${stdout}`);
-    });
+async function cutVideoInto3SecondSegments(inputVideoPath) {
+    // Implementation using FFmpeg
 }
 
 /**
- * Merges multiple videos into one.
- * @param {string[]} inputFiles - An array of input video file paths.
- * @param {string} outputFile - The path to save the merged video file.
+ * Merges multiple videos into a single video.
+ * @param {Array<string>} videoPaths - An array of video paths to merge.
+ * @returns {Promise<string>} - The path of the merged video.
  */
-function mergeVideos(inputFiles, outputFile) {
-    const fileList = inputFiles.map(file => `file '${file}'`).join('\n');
-    const listFile = 'fileList.txt';
-
-    // Create a temporary file list for FFmpeg
-    require('fs').writeFileSync(listFile, fileList);
-
-    const command = `ffmpeg -f concat -safe 0 -i ${listFile} -c copy ${outputFile}`;
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error merging videos: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.error(`stderr: ${stderr}`);
-            return;
-        }
-        console.log(`Videos merged successfully: ${stdout}`);
-    });
+async function mergeVideos(videoPaths) {
+    // Implementation using FFmpeg
 }
 
-module.exports = { cutVideo, mergeVideos };
+/**
+ * Gets metadata from a video file.
+ * @param {string} videoPath - The path to the video file.
+ * @returns {Promise<Object>} - Metadata of the video file.
+ */
+async function getVideoMetadata(videoPath) {
+    // Implementation using FFmpeg
+}
+
+/**
+ * Generates a thumbnail from a video file.
+ * @param {string} videoPath - The path to the video file.
+ * @param {string} outputPath - The path to save the generated thumbnail.
+ * @returns {Promise<string>} - The path of the generated thumbnail.
+ */
+async function generateThumbnail(videoPath, outputPath) {
+    // Implementation using FFmpeg
+}
+
+module.exports = {
+    cutVideoInto3SecondSegments,
+    mergeVideos,
+    getVideoMetadata,
+    generateThumbnail
+};
