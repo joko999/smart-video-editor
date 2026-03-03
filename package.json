@@ -1,0 +1,1 @@
+{"name": "smart-video-editor","private": true,"workspaces": ["frontend/*", "backend/*"],"scripts": {"start": "node backend/server.js"},"dependencies": {},"devDependencies": {}}
