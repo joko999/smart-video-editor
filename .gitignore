@@ -1,0 +1,21 @@
+# Node.js
+node_modules/
+.env
+
+# Build outputs
+/dist/
+/build/
+
+# React
+/coverage/
+/.cache/
+/.eslintcache
+
+# General Development
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
